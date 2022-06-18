@@ -21,20 +21,32 @@ COLUMN_MAPPINGS = {
 
 
 def hotels_dataframe():
-    raw_csv = hotels_csv()
-    renamed = raw_csv.rename(COLUMN_MAPPINGS)
+    original_csv = hotels_csv()
+    renamed = original_csv.rename(columns=COLUMN_MAPPINGS, errors='raise')
     return renamed
 
 def hotels_csv():
     csv_file = os.getcwd() + DATA_FILE_NAME
     return pd.read_csv(csv_file, encoding=DATA_FILE_ENCODING)
 
+def clean_hotel_data(df):
+    df['city_name'] = df['city_name'].str[:-2]
+    df['country_name'] = df['country_name'].str[:-2]
+    df['info_1'] = df['info_1'].str.strip()
+    df['info_2'] = df['info_2'].str.strip()
+    df['info_3'] = df['info_3'].str.strip()
+    df['info_4'] = df['info_4'].str.strip()
+    df['info_5'] = df['info_5'].str.strip()
+    df['info_6'] = df['info_6'].str.strip()
+    df['info_7'] = df['info_1'].str.strip()
+
 
 def import_hotels():
     print('Importing hotels from csv...')
     hotels_df = hotels_dataframe()
-    print(hotels_df.head(10))
-
+    print('Cleaning hotel data...')
+    clean_hotel_data(hotels_df)
+    return hotels_df
 
 
 if __name__ == '__main__':
