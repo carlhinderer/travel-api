@@ -8,29 +8,28 @@ from config import Config
 from extensions import db
 
 
-app = Flask(__name__)
-
-app.config.from_object(Config)
-
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-from app import routes, models
+# Old Style
+# app = Flask(__name__)
+# app.config.from_object(Config)
+# db = SQLAlchemy(app)
+# migrate = Migrate(app, db)
+# from app import routes, models
 
 
 
 def create_app():
-    env = os.environ.get('ENV', 'Development')
+    # env = os.environ.get('ENV', 'Development')
 
-    if env == 'Production':
-        config_str = 'config.ProductionConfig'
-    elif env == 'Staging':
-        config_str = 'config.StagingConfig'
-    else:
-        config_str = 'config.DevelopmentConfig'
+    # if env == 'Production':
+        # config_str = 'config.ProductionConfig'
+    # elif env == 'Staging':
+        # config_str = 'config.StagingConfig'
+    # else:
+        # config_str = 'config.DevelopmentConfig'
 
     app = Flask(__name__)
-    app.config.from_object(config_str)
+    # app.config.from_object(config_str)
+    app.config.from_object(Config)
 
     register_extensions(app)
     register_resources(app)
@@ -42,7 +41,8 @@ def register_extensions(app):
     db.init_app(app)
     migrate = Migrate(app, db)
 
-
+def register_resources(app):
+    pass
 
 
 
