@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 
 from config import Config
 from extensions import db
+import models
 
 
 # Old Style
