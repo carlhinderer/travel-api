@@ -2,18 +2,26 @@ from extensions import db
 
 
 class Hotel(db.Model):  
-    # ident
-    # hotel_name
-    # continent_name
-    # city_name
-    # country_name
-    # price
-    # rating
-    # reviews_count
-    # info_1
-    # info_2
-    # info_3
-    # info_4
-    # info_5
-    # info_6
-    # info_7
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    continent_name = db.Column(db.String(100))
+    city_name = db.Column(db.String(100))
+    country_name = db.Column(db.String(100))
+    price = db.Column(db.Float)
+    rating = db.Column(db.Float)
+    reviews_count = db.Column(db.Integer)
+    info_1 = db.Column(db.String(100))
+    info_2 = db.Column(db.String(100))
+    info_3 = db.Column(db.String(100))
+    info_4 = db.Column(db.String(100))
+    info_5 = db.Column(db.String(100))
+    info_6 = db.Column(db.String(100))
+    info_7 = db.Column(db.String(100))
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
