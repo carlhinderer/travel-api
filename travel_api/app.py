@@ -6,7 +6,10 @@ from flask_migrate import Migrate
 
 from config import Config
 from extensions import db
+
 import models
+from routes.hotel import hotel
+
 
 
 # Old Style
@@ -34,6 +37,7 @@ def create_app():
 
     register_extensions(app)
     register_resources(app)
+    register_blueprints(app)
 
     return app
 
@@ -42,8 +46,13 @@ def register_extensions(app):
     db.init_app(app)
     migrate = Migrate(app, db)
 
+
 def register_resources(app):
     pass
+
+
+def register_blueprints(app):
+    app.register_blueprint(hotel, url_prefix='/api/v1')
 
 
 
