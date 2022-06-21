@@ -4,20 +4,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from config import Config
-from extensions import db
+from api.config import Config
+from api.extensions import db
 
-import models
-from routes.hotel import hotel
-
-
-
-# Old Style
-# app = Flask(__name__)
-# app.config.from_object(Config)
-# db = SQLAlchemy(app)
-# migrate = Migrate(app, db)
-# from app import routes, models
+import api.models
+from api.routes.hotel import hotel
 
 
 
@@ -36,7 +27,6 @@ def create_app():
     app.config.from_object(Config)
 
     register_extensions(app)
-    register_resources(app)
     register_blueprints(app)
 
     return app
@@ -46,16 +36,5 @@ def register_extensions(app):
     db.init_app(app)
     migrate = Migrate(app, db)
 
-
-def register_resources(app):
-    pass
-
-
 def register_blueprints(app):
     app.register_blueprint(hotel, url_prefix='/api/v1')
-
-
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run()

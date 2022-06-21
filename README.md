@@ -4,5 +4,8 @@ Migrate Database:
 $ flask db init
 $ flask db migrate
 
-Run:
-$ flask run
+Run in Development:
+$ python wsgi.py
+
+Run in Production:
+$ gunicorn wsgi:handler
