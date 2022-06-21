@@ -1,4 +1,4 @@
-from api.extensions import db
+from extensions import db
 
 
 class Hotel(db.Model):

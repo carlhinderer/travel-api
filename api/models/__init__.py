@@ -1,1 +1,1 @@
-from api.models.hotel import Hotel
+from models.hotel import Hotel
