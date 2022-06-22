@@ -5,7 +5,8 @@ $ flask db init
 $ flask db migrate
 
 Run in Development:
-$ python wsgi.py
+$ python app.py OR 
+$ flask run
 
 Run in Production:
 $ gunicorn wsgi:handler
