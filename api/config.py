@@ -20,6 +20,11 @@ class TestConfig(BaseConfig):
     DEBUG = True
     TESTING = True
 
+    SQLALCHEMY_DATABASE_URI = 'postgresql://travelapitestuser:travelapitestpw@localhost/travelapitest'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-placeholder'
+
 
 class ProductionConfig(BaseConfig):
     FLASK_ENV = 'production'
