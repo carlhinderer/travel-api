@@ -7,9 +7,7 @@ from flask_migrate import Migrate
 import config
 from extensions import db
 
-import models
 from routes.hotel import hotel
-
 
 
 def create_app():

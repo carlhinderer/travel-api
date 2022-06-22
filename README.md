@@ -1,12 +1,14 @@
 # travel-api
 
-Migrate Database:
-$ flask db init
-$ flask db migrate
+#h4 Migrate Database
 
-Run in Development:
-$ python app.py OR 
-$ flask run
+> $ flask db init
+> $ flask db migrate -m commit_message
+> $ flask db upgrade
 
-Run in Production:
-$ gunicorn wsgi:handler
+#h4 Run in Development
+> $ python app.py OR 
+> $ flask run
+
+#h4 Run in Production
+> $ gunicorn wsgi:handler

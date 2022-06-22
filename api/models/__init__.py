@@ -1,1 +1,0 @@
-from models.hotel import Hotel

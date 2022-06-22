@@ -1,8 +1,8 @@
-"""empty message
+"""Create hotels table
 
-Revision ID: d8ed608a2842
+Revision ID: 9ea604446613
 Revises: 
-Create Date: 2022-06-19 09:45:14.704683
+Create Date: 2022-06-22 14:17:08.461061
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd8ed608a2842'
+revision = '9ea604446613'
 down_revision = None
 branch_labels = None
 depends_on = None
