@@ -4,12 +4,6 @@ import sqlalchemy as sa
 from app import create_app, db
 
 
-TEST_CONFIG = {
-    TESTING = True,
-    SQLALCHEMY_DATABASE_URI = 'postgresql://travelapitestuser:travelapitestpw@localhost/travelapitest',
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-}
-
 @pytest.fixture(scope="session")
 def database():
     db_opts = sa.engine.url.make_url(DB_CONN).translate_connect_args()

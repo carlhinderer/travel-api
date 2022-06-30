@@ -130,3 +130,5 @@ dmypy.json
 
 # Seed data
 data/
+# Ignore dynaconf secret files
+.secrets.*

@@ -1,0 +1,15 @@
+[default]
+FLASK_ENV = 'development'
+DEBUG = false
+TESTING = false
+SECRET_KEY = 'super-secret-key'
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+
+[development]
+DEBUG = true
+
+[test]
+TESTING = true
+SECRET_KEY = 'super-secret-test-key'
+
+[production]

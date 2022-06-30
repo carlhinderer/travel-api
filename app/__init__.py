@@ -1,15 +1,12 @@
 import os
 
 from flask import Flask
+from dynaconf import FlaskDynaconf
 
 
-def create_app(test_config=None):
+def create_app():
     app = Flask(__name__)
-
-    if test_config is None:
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        app.config.from_mapping(test_config)
+    FlaskDynaconf(app)
 
     from .extensions import db, migrate
     db.init_app(app)
