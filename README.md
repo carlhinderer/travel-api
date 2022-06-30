@@ -8,12 +8,11 @@
 
 #### Run in Development
 
-`$ python app.py` OR  
 `$ flask run`
 
 #### Run tests
 
-`$ APP_ENV=test pytest`
+`$ python -m pytest tests`
 
 #### Run in Production
 
