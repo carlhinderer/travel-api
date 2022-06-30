@@ -11,6 +11,10 @@
 `$ python app.py` OR  
 `$ flask run`
 
+#### Run tests
+
+`$ APP_ENV=test pytest`
+
 #### Run in Production
 
 `$ gunicorn wsgi:handler`

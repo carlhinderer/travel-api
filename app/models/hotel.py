@@ -1,4 +1,4 @@
-from extensions import db
+from app.extensions import db
 
 
 class Hotel(db.Model):
@@ -19,6 +19,18 @@ class Hotel(db.Model):
     info_5 = db.Column(db.String(100))
     info_6 = db.Column(db.String(100))
     info_7 = db.Column(db.String(100))
+
+    @classmethod
+    def get_by_id(cls, hotel_id):
+        return cls.query.filter_by(id=hotel_id).first()
+
+    @classmethod
+    def get_by_continent(cls, continent):
+        return cls.query.filter_by(continent_name=continent).all()
+
+    @classmethod
+    def get_by_country(cls, country):
+        return cls.query.filter_by(country_name=country).all()
 
     def save(self):
         db.session.add(self)
