@@ -1,6 +1,6 @@
 import pytest
 
-from api.models.hotel import Hotel
+from app.models.hotel import Hotel
 
 
 def test_it_works():
