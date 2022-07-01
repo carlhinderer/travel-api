@@ -1,15 +1,9 @@
 import pytest
-import sqlalchemy as sa
+from flask_sqlalchemy import SQLAlchemy
 
 from app import create_app
 from app.extensions import db
 
-
-# @pytest.fixture(scope="session")
-# def database():
-    # db.create_all()
-    # db.session.commit()
-    # yield
 
 @pytest.fixture(scope="session")
 def app():
@@ -17,10 +11,16 @@ def app():
 
     with app.app_context():
         db.create_all()
-        # db.session.commit()
+        db.session.commit()
         yield app
-        # db.session.remove()
+        db.session.remove()
         db.drop_all()
+
+# Need this for pytest-flask-sqlalchemy extension
+@pytest.fixture(scope="session")
+def _db(app):
+    database = SQLAlchemy(app=app)
+    return database
 
 @pytest.fixture
 def client(app):
